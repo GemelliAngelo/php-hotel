@@ -49,6 +49,13 @@ $hotels = [
 
 ]; 
 
+foreach ($hotels as $hotel){
+    echo "<ul>";
+    foreach ($hotel as $key => $value){
+        echo "<li> $key: $value </li>";
+    }
+    echo "</ul>";
+}
 
 ?>
 
