@@ -8,9 +8,26 @@
 
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container my-4">
         <h1>HOTELS</h1>
 
+        <div class="border border-dark rounded p-3">
+
+            <form action="./index.php" method="GET">
+                <div class="row g-0">
+                    <div class="col-9">
+                        <input type="number" name="rating" class="form-control" id="inputRating" placeholder="Rating" name="rating">
+                    </div>
+                    <div class="col-3">
+                        <div class="mb-3 form-check form-check-reverse mt-1">
+                            <label class="form-check-label" for="exampleCheck1">Parcheggio</label>
+                            <input type="checkbox" name="parking" class="form-check-input" id="exampleCheck1">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Cerca</button>
+            </form>
+        </div>
         <div class="row g-3 mt-3">
             
             
@@ -55,14 +72,26 @@ $hotels = [
     
 ]; 
 
+
 foreach ($hotels as $hotel){
-    echo "<div class='col-6'>";
-    echo "<ul class='list-group'>";
-    foreach ($hotel as $key => $value){
-        echo "<li class='list-group-item text-bg-secondary'> $key: $value </li>";
+
+    if($_GET["rating"] <= $hotel["vote"]){
+        echo "<div class='col-6'>";
+        echo "<ul class='list-group'>";
+        foreach ($hotel as $key => $value){
+            if($key == "parking"){
+                if($value == true){
+                    $value = "Si";
+                }else{
+                    $value = "No";
+                }
+            }
+            echo "<li class='list-group-item text-bg-secondary'> $key: $value </li>";
+        }
+        echo "</ul>";
+        echo "</div>";
     }
-    echo "</ul>";
-    echo "</div>";
+
 }
 
 ?>
