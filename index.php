@@ -59,7 +59,7 @@ foreach ($hotels as $hotel){
     echo "<div class='col-6'>";
     echo "<ul class='list-group'>";
     foreach ($hotel as $key => $value){
-        echo "<li class='list-group-item'> $key: $value </li>";
+        echo "<li class='list-group-item text-bg-secondary'> $key: $value </li>";
     }
     echo "</ul>";
     echo "</div>";
